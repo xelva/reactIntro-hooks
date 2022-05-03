@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Search = () => {
-    const [term, setTerm] = useState('welcome');
+    const [term, setTerm] = useState('kelly');
     const [results, setResults] = useState([]);
     const [debouncedTerm, setDebouncedTerm] = useState(term);
 
@@ -19,7 +19,6 @@ const Search = () => {
 
 
     useEffect(() => {
-
         const search = async () => {
             const { data } = await axios.get('http://en.wikipedia.org/w/api.php', {
                 params: {
@@ -33,9 +32,7 @@ const Search = () => {
 
             setResults(data.query.search);
         };
-
         search();
-
     }, [debouncedTerm])
 
 
